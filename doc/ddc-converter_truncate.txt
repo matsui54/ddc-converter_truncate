@@ -1,0 +1,67 @@
+*ddc-converter_truncate.txt*		Truncate converter for ddc.vim
+
+Author: matsui54 <haru.matu9168 at gmail.com>
+License: MIT license
+
+CONTENTS				*ddc-converter_truncate-contents*
+
+Introduction		|ddc-converter_truncate-introduction|
+Install			|ddc-converter_truncate-install|
+Examples		|ddc-converter_truncate-examples|
+Params			|ddc-converter_truncate-params|
+
+
+==============================================================================
+INTRODUCTION				*ddc-converter_truncate-introduction*
+
+This converter truncates length of completion items.
+
+==============================================================================
+INSTALL					*ddc-converter_truncate-install*
+
+Please install both "ddc.vim" and "denops.vim".
+
+https://github.com/Shougo/ddc.vim
+https://github.com/vim-denops/denops.vim
+
+==============================================================================
+EXAMPLES				*ddc-converter_truncate-examples*
+
+>
+	call ddc#custom#patch_global('sourceOptions', {
+	      \ '_': {'converters': ['converter_truncate'], 'sorters': []},
+	      \ })
+
+	call ddc#custom#patch_global('filterParams', {
+	      \ 'converter_truncate': {'maxAbbrWidth': 60, 'maxInfo': 500},
+	      \ })
+<
+==============================================================================
+PARAMS						*ddc-converter_truncate-params*
+
+				  *ddc-converter_truncate-param-maxAbbrWidth*
+maxAbbrWidth	(number)
+		Max width of "abbr" field of |complete-items|.
+
+		Default: 80
+
+				  *ddc-converter_truncate-param-maxInfoWidth*
+maxInfoWidth	(number)
+		Max width of "info" field of |complete-items|.
+
+		Default: 200
+
+				  *ddc-converter_truncate-param-maxKindWidth*
+maxKindWidth	(number)
+		Max width of "kind" field of |complete-items|.
+
+		Default: 40
+
+				  *ddc-converter_truncate-param-maxMenuWidth*
+maxMenuWidth	(number)
+		Max width of "menu" field of |complete-items|.
+
+		Default: 40
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:noet:fen:noet:
