@@ -57,6 +57,7 @@ type Params = {
   maxInfoWidth: number;
   maxKindWidth: number;
   maxMenuWidth: number;
+  ellipsis: string;
 };
 
 export class Filter extends BaseFilter {
@@ -71,7 +72,7 @@ export class Filter extends BaseFilter {
         candidate.abbr = truncateSkipping(
           candidate.abbr ? candidate.abbr : candidate.word,
           param.maxAbbrWidth,
-          "..",
+          param.ellipsis,
           param.maxAbbrWidth / 3,
         );
       }
@@ -79,7 +80,7 @@ export class Filter extends BaseFilter {
         candidate.info = truncateSkipping(
           candidate.info,
           param.maxInfoWidth,
-          "..",
+          param.ellipsis,
           param.maxInfoWidth / 3,
         );
       }
@@ -87,7 +88,7 @@ export class Filter extends BaseFilter {
         candidate.kind = truncateSkipping(
           candidate.kind,
           param.maxKindWidth,
-          "..",
+          param.ellipsis,
           param.maxKindWidth / 3,
         );
       }
@@ -95,7 +96,7 @@ export class Filter extends BaseFilter {
         candidate.menu = truncateSkipping(
           candidate.menu,
           param.maxMenuWidth,
-          "..",
+          param.ellipsis,
           param.maxMenuWidth / 3,
         );
       }
@@ -109,6 +110,7 @@ export class Filter extends BaseFilter {
       maxInfoWidth: 200,
       maxKindWidth: 40,
       maxMenuWidth: 40,
+      ellipsis: "..",
     };
     return params as unknown as Record<string, unknown>;
   }
