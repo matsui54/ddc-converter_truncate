@@ -1,7 +1,7 @@
 import {
   BaseFilter,
   Candidate,
-} from "https://deno.land/x/ddc_vim@v0.5.2/types.ts#^";
+} from "https://deno.land/x/ddc_vim@v0.11.0/types.ts#^";
 
 import { eastAsianWidth } from "https://esm.sh/eastasianwidth";
 
@@ -104,14 +104,13 @@ export class Filter extends BaseFilter {
     return Promise.resolve(args.candidates);
   }
 
-  params(): Record<string, unknown> {
-    const params: Params = {
+  params(): Params {
+    return {
       maxAbbrWidth: 80,
       maxInfoWidth: 200,
       maxKindWidth: 40,
       maxMenuWidth: 40,
       ellipsis: "..",
     };
-    return params as unknown as Record<string, unknown>;
   }
 }
