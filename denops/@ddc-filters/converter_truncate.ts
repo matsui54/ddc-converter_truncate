@@ -1,7 +1,7 @@
 import {
   BaseFilter,
   Candidate,
-} from "https://deno.land/x/ddc_vim@v0.14.0/types.ts#^";
+} from "https://deno.land/x/ddc_vim@v0.18.0/types.ts#^";
 
 import { eastAsianWidth } from "https://esm.sh/eastasianwidth";
 
@@ -60,7 +60,7 @@ type Params = {
   ellipsis: string;
 };
 
-export class Filter extends BaseFilter {
+export class Filter extends BaseFilter<Params> {
   filter(args: {
     filterParams: Record<string, unknown>;
     completeStr: string;
