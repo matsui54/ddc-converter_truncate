@@ -1,7 +1,7 @@
 import {
   BaseFilter,
   Candidate,
-} from "https://deno.land/x/ddc_vim@v0.18.0/types.ts#^";
+} from "https://deno.land/x/ddc_vim@v1.3.0/types.ts#^";
 
 import { eastAsianWidth } from "https://esm.sh/eastasianwidth";
 
@@ -45,6 +45,7 @@ export function truncateSkipping(
   footerLen: number,
 ): string {
   if (!str) return "";
+  if (!maxWidth) return "";
   if (str.length < maxWidth / 2) return str;
   if (strwidth(str) <= maxWidth) return str;
 
