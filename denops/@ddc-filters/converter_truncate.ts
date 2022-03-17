@@ -42,7 +42,7 @@ export function truncateSkipping(
   footerLen: number,
 ): string {
   if (!str) return "";
-  if (!maxWidth) return "";
+  if (maxWidth <= 0) return "";
   if (str.length < maxWidth / 2) return str;
   if (strwidth(str) <= maxWidth) return str;
 
@@ -66,38 +66,30 @@ export class Filter extends BaseFilter<Params> {
   }): Promise<Item[]> {
     const param = args.filterParams as Params;
     for (const candidate of args.candidates) {
-      if (param.maxAbbrWidth > 0) {
-        candidate.abbr = truncateSkipping(
-          candidate.abbr ? candidate.abbr : candidate.word,
-          param.maxAbbrWidth,
-          param.ellipsis,
-          param.maxAbbrWidth / 3,
-        );
-      }
-      if (param.maxInfoWidth > 0) {
-        candidate.info = truncateSkipping(
-          candidate.info,
-          param.maxInfoWidth,
-          param.ellipsis,
-          param.maxInfoWidth / 3,
-        );
-      }
-      if (param.maxKindWidth > 0) {
-        candidate.kind = truncateSkipping(
-          candidate.kind,
-          param.maxKindWidth,
-          param.ellipsis,
-          param.maxKindWidth / 3,
-        );
-      }
-      if (param.maxMenuWidth > 0) {
-        candidate.menu = truncateSkipping(
-          candidate.menu,
-          param.maxMenuWidth,
-          param.ellipsis,
-          param.maxMenuWidth / 3,
-        );
-      }
+      candidate.abbr = truncateSkipping(
+        candidate.abbr ? candidate.abbr : candidate.word,
+        param.maxAbbrWidth,
+        param.ellipsis,
+        param.maxAbbrWidth / 3,
+      );
+      candidate.info = truncateSkipping(
+        candidate.info,
+        param.maxInfoWidth,
+        param.ellipsis,
+        param.maxInfoWidth / 3,
+      );
+      candidate.kind = truncateSkipping(
+        candidate.kind,
+        param.maxKindWidth,
+        param.ellipsis,
+        param.maxKindWidth / 3,
+      );
+      candidate.menu = truncateSkipping(
+        candidate.menu,
+        param.maxMenuWidth,
+        param.ellipsis,
+        param.maxMenuWidth / 3,
+      );
     }
     return Promise.resolve(args.candidates);
   }
