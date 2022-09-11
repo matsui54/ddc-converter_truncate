@@ -1,4 +1,4 @@
-import { BaseFilter, Item } from "https://deno.land/x/ddc_vim@v2.3.0/types.ts";
+import { BaseFilter, Item } from "https://deno.land/x/ddc_vim@v2.5.1/types.ts";
 
 import { eastAsianWidth } from "https://esm.sh/eastasianwidth";
 
