@@ -1,4 +1,4 @@
-import { BaseFilter, Item } from "https://deno.land/x/ddc_vim@v2.5.1/types.ts";
+import { BaseFilter, Item } from "https://deno.land/x/ddc_vim@v3.1.0/types.ts";
 
 import { eastAsianWidth } from "https://esm.sh/eastasianwidth";
 
@@ -60,12 +60,12 @@ type Params = {
 
 export class Filter extends BaseFilter<Params> {
   filter(args: {
-    filterParams: Record<string, unknown>;
+    filterParams: Params;
     completeStr: string;
-    candidates: Item[];
+    items: Item[];
   }): Promise<Item[]> {
     const param = args.filterParams as Params;
-    for (const candidate of args.candidates) {
+    for (const candidate of args.items) {
       candidate.abbr = truncateSkipping(
         candidate.abbr ? candidate.abbr : candidate.word,
         param.maxAbbrWidth,
@@ -91,7 +91,7 @@ export class Filter extends BaseFilter<Params> {
         param.maxMenuWidth / 3,
       );
     }
-    return Promise.resolve(args.candidates);
+    return Promise.resolve(args.items);
   }
 
   params(): Params {
