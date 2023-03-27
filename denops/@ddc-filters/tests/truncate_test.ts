@@ -1,4 +1,4 @@
-import { assertEquals } from "https://deno.land/std@0.171.0/testing/asserts.ts";
+import { assertEquals } from "https://deno.land/std@0.181.0/testing/asserts.ts";
 import { truncateSkipping } from "../converter_truncate.ts";
 
 Deno.test("truncateSkipping", () => {
