@@ -1,5 +1,5 @@
-import { BaseFilter, Item } from "https://deno.land/x/ddc_vim@v3.4.0/types.ts";
-
+import { Item } from "jsr:@shougo/ddc-vim@9.5.0/types";
+import { BaseFilter } from "jsr:@shougo/ddc-vim@9.5.0/filter";
 import { eastAsianWidth } from "https://esm.sh/eastasianwidth";
 
 export function charwidth(c: string): number {
